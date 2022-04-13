@@ -1,0 +1,24 @@
+{
+    "name": "starterpack-zhoucaini",
+    "version": "1.0.0",
+    "description": "*description*",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dartmouth-cs52-22S/starterpack-zhoucaiNi.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dartmouth-cs52-22S/starterpack-zhoucaiNi/issues"
+    },
+    "homepage": "https://github.com/dartmouth-cs52-22S/starterpack-zhoucaiNi#readme",
+    "devDependencies": {
+        "webpack": "^5.72.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.8.1"
+    }
+}
