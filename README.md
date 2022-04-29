@@ -1,8 +1,8 @@
-# Title
+# CS 52 SA Starter pack project
 
-*description*
+*customized starter pack for web develpoment *
 
-[deployed url](http://url-if-deployed-here)
+[deployed url](https://starter-pack-ni.onrender.com/)
 
 ## What Worked Well
 
