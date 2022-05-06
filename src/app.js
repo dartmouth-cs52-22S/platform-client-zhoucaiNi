@@ -1,10 +1,16 @@
 import React from 'react';
 import './style.scss';
 import {
-  BrowserRouter as Router, Routes, Route, NavLink, useParams,
+  BrowserRouter as Router, Routes, Route, NavLink,
 } from 'react-router-dom';
-import Counter from './components/counter';
-import Controls from './components/controls';
+// import Post from './components/Post/NewPost';
+import NewPost from './components/Post/NewPost';
+import Posts from './components/Post/Posts';
+import PostDetails from './components/Post/PostDetail';
+
+function FallBack(props) {
+  return <div>post not found </div>;
+}
 
 function App(props) {
   return (
@@ -12,25 +18,13 @@ function App(props) {
       <div>
         <Nav />
         <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/test/:id" element={<Test />} />
-          <Route path="*" element={<FallBack />} />
+          <Route path="/" element={<Posts />} />
+          <Route path="/posts/new" element={<NewPost />} />
+          <Route path="/posts/:postID" element={<PostDetails />} />
+          <Route path="*" element={FallBack} />
         </Routes>
       </div>
     </Router>
-  );
-}
-
-function About(props) {
-  return <div> All there is to know about me </div>;
-}
-function Welcome(props) {
-  return (
-    <div>Welcome
-      <Counter />
-      <Controls />
-    </div>
   );
 }
 
@@ -38,23 +32,13 @@ function Nav(props) {
   return (
     <nav>
       <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-
+        <li><NavLink to="/">Epic Blog</NavLink></li>
+        <li><NavLink to="/posts/new">New Post</NavLink></li>
+        {/* <li><NavLink to="/test/">test id1</NavLink></li> */}
+        {/* <li><NavLink to="/test/id2">test id2</NavLink></li> */}
       </ul>
     </nav>
   );
-}
-
-function Test(props) {
-  const { id } = useParams();
-  return <div> ID: {id} </div>;
-}
-
-function FallBack(props) {
-  return <div>URL Not Found</div>;
 }
 
 export default App;
