@@ -11,5 +11,7 @@ I love how Redux manages the state. It makes it a lot easier to manage and contr
 Had some difficulty with fetchPosts at first but trying to get it working helped me understand Redux a lot better. 
 ## Extra Credit
 - style: windows98 style
+- the form and the main posts components are draggable
+- images for the navlinks
 
 ## Screenshots
