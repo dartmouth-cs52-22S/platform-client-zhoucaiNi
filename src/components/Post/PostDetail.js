@@ -68,6 +68,7 @@ class PostDetail extends Component {
     if (this.state.isCoverUrlEditing) {
       this.setState({ isTagsEditing: false });
       this.props.updatePost(this.props.params.postID.substring(1), { coverUrl: this.state.post.coverUrl });
+      this.refreshPage();
     } else {
       this.setState({ isCoverUrlEditing: true });
     }
@@ -164,6 +165,11 @@ class PostDetail extends Component {
 
   onDeleteClick = (e) => {
     this.props.deletePost(this.props.params.postID.substring(1), this.props.navigate);
+  };
+
+  // eslint-disable-next-line class-methods-use-this
+  refreshPage = () => {
+    window.location.reload();
   };
 
   render() {
