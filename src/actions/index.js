@@ -13,32 +13,25 @@ export const ActionTypes = {
 };
 
 export function fetchPosts() {
-  // ActionCreator returns a function
-  // that gets called with dispatch
-  // remember (arg) => { } is a function
-  console.log(`${ROOT_URL}/posts${API_KEY}`);
   return (dispatch) => {
     axios.get(`${ROOT_URL}/posts${API_KEY}`)
       .then((response) => {
-        // once we are done fetching we can dispatch a redux action with the response data
         dispatch({ type: ActionTypes.FETCH_POSTS, payload: response.data });
       })
       .catch((error) => {
-        // whaaat?
-        // dispatch an error, use it in a separate error reducer. this is the beauty of redux.
-        // have an error component somewhere show it
         dispatch({ type: ActionTypes.ERROR_SET, error });
         // might you also want an ERROR_CLEAR action?
       });
   };
 }
 
-export function createPost(post, history) {
+export function createPost(post, navigate) {
 /* axios post */
   console.log('df');
   axios.post(`${ROOT_URL}/posts${API_KEY}`, post)
     .then((response) => {
       console.log(response);
+      navigate('/');
     })
     .catch((error) => {
       this.setState({ errorMessage: error.message });
@@ -74,13 +67,16 @@ export function updatePost(id, change) { /* axios get */
   };
 }
 
-export function deletePost(id, history) {
-  axios.delete(`${ROOT_URL}/posts/${id}/${API_KEY}`)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error('There was an error!', error);
-    });
-}
 /* axios delete */
+export function deletePost(id, navigate) {
+  return (dispatch) => {
+    axios.delete(`${ROOT_URL}/posts/${id}/${API_KEY}`)
+      .then((response) => {
+        console.log(response);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
+  };
+}

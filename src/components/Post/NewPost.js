@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-param-reassign */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { produce } from 'immer';
+import Draggable from 'react-draggable';
 import { createPost } from '../../actions';
+import withRouter from '../withRouter';
 
 class NewPost extends Component {
   constructor(props) {
@@ -21,66 +24,67 @@ class NewPost extends Component {
     this.setState(produce((draft) => {
       draft.post.title = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   onTagChange = (event) => {
     this.setState(produce((draft) => {
       draft.post.tags = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   onContentChange = (event) => {
     this.setState(produce((draft) => {
       draft.post.content = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   onCoverURLChange = (event) => {
     this.setState(produce((draft) => {
       draft.post.coverUrl = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   onSubmit = () => {
-    // console.log(this.state.post);
-    createPost(this.state.post);
+    createPost(this.state.post, this.props.navigate);
   };
 
   render() {
     return (
-      <div>
-        <h1> Create New Post </h1>
-        <div id="createPostForm">
-          <h1> Create New Post </h1>
+      <Draggable>
+        <div className="window new-post-window">
+          <div className="title-bar">
+            <div className="title-bar-text">Create New Post</div>
+            <div className="title-bar-controls">
+              <button type="button" aria-label="Minimize" />
+              <button type="button" aria-label="Maximize" />
+              <button type="button" aria-label="Close" />
+            </div>
+          </div>
+          <div id="createPostForm">
+            <div className="field-row-stacked">
+              <label htmlFor="title"> Title </label>
+              <input onChange={this.onTitleChange} id="title" name="title" type="title" placeholder="Post Title" />
+            </div>
 
-          <label htmlFor="title"> Titless
-            <input onChange={this.onTitleChange} id="title" name="title" type="title" placeholder="Post Title" />
-          </label>
-
-          <label htmlFor="tags"> Tag
-            <input onChange={this.onTagChange} id="tags" name="tags" type="tags" placeholder="Tags" />
-          </label>
-
-          <label htmlFor="content"> Content
-            <input onChange={this.onContentChange} id="content" name="contetn" type="content" placeholder="Content" />
-          </label>
-
-          <label htmlFor="coverImageUrl"> Cover Image URL
-            <input onChange={this.onCoverURLChange} id="url" name="url" type="url" placeholder="Image Url" />
-          </label>
-          <input type="submit" onClick={this.onSubmit} />
+            <div className="field-row-stacked">
+              <label htmlFor="tags"> Tags </label>
+              <br /><input onChange={this.onTagChange} id="tags" name="tags" type="tags" placeholder="Tags" />
+            </div>
+            <div className="field-row-stacked">
+              <label htmlFor="content"> Content </label>
+              <input className="content-input" onChange={this.onContentChange} id="content" name="content" type="content" placeholder="Content" />
+            </div>
+            <div className="field-row-stacked">
+              <label htmlFor="coverImageUrl"> Cover Image URL  </label>
+              <input onChange={this.onCoverURLChange} id="url" name="url" type="url" placeholder="Image Url" />
+            </div>
+            <button type="button" aria-label="button" onClick={this.onSubmit}> Create Posting </button>
+          </div>
         </div>
-      </div>
+      </Draggable>
+
     );
   }
 }
 
-export default connect(null, { createPost })(NewPost);
+export default withRouter(connect(null, { createPost })(NewPost));

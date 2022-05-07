@@ -26,17 +26,11 @@ class PostDetail extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.params.postID);
-
     this.props.fetchPost(this.props.params.postID.substring(1));
-
-    console.log(this.props);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.current !== this.props.current) {
-    // Now you have access to targetArticle's result and updated Redux state
-      console.log(this.props.current);
       this.setState(produce((draft) => {
         draft.post = this.props.current;
       }));
@@ -90,24 +84,18 @@ class PostDetail extends Component {
     this.setState(produce((draft) => {
       draft.post.tags = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   handleContentChange = (event) => {
     this.setState(produce((draft) => {
       draft.post.content = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   handleCoverUrlChange = (event) => {
     this.setState(produce((draft) => {
       draft.post.coverUrl = event.target.value;
     }));
-    // this.props.onSearchChange(event.target.value);
-    console.log(event.target.value);
   };
 
   editTitle = (event) => {
@@ -122,7 +110,7 @@ class PostDetail extends Component {
         />
       );
     } else {
-      return <p onClick={this.handleTitleEditClick}>{this.state.post.title} </p>;
+      return <h3 onClick={this.handleTitleEditClick}>{this.state.post.title} </h3>;
     }
   };
 
@@ -154,7 +142,7 @@ class PostDetail extends Component {
         />
       );
     } else {
-      return <p onClick={this.handleTagsEditClick}>{this.state.post.tags} </p>;
+      return <h5 onClick={this.handleTagsEditClick}>{this.state.post.tags} </h5>;
     }
   };
 
@@ -175,15 +163,21 @@ class PostDetail extends Component {
   };
 
   onDeleteClick = (e) => {
-    this.props.deletePost(this.props.params.postID.substring(1));
-    this.navigate('/');
+    this.props.deletePost(this.props.params.postID.substring(1), this.props.navigate);
   };
 
   render() {
-    console.log(this.state);
     return (
-      <div>
-        <h1> Post Details </h1>
+      <div className="window post-window">
+        <div className="title-bar">
+          <div className="title-bar-text">A Complete Window</div>
+          <div className="title-bar-controls">
+            <button type="button" aria-label="Minimize" />
+            <button type="button" aria-label="Maximize" />
+            <button type="button" aria-label="Close" />
+          </div>
+        </div>
+        <h3> Post Details </h3>
         {this.editCoverUrl()}
         {this.editTitle()}
         {this.editTags()}

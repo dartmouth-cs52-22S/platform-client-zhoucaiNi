@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 function Post(props) {
   return (
     <div className="post">
-      <NavLink to={`/posts/:${props.post.id}`}>
+      <NavLink className="navLink" to={`/posts/:${props.post.id}`}>
         <img src={props.post.coverUrl} alt="cover" />
-        <div> {props.post.title}</div>
+        <h3> {props.post.title}</h3>
         <div> {props.post.tags}</div>
       </NavLink>
     </div>

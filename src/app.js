@@ -7,6 +7,8 @@ import {
 import NewPost from './components/Post/NewPost';
 import Posts from './components/Post/Posts';
 import PostDetails from './components/Post/PostDetail';
+import noteIcon from './img/note.png';
+import newIcon from './img/new.png';
 
 function FallBack(props) {
   return <div>post not found </div>;
@@ -14,8 +16,8 @@ function FallBack(props) {
 
 function App(props) {
   return (
-    <Router>
-      <div>
+    <div className="main">
+      <Router>
         <Nav />
         <Routes>
           <Route path="/" element={<Posts />} />
@@ -23,20 +25,25 @@ function App(props) {
           <Route path="/posts/:postID" element={<PostDetails />} />
           <Route path="*" element={FallBack} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
 function Nav(props) {
   return (
     <nav>
-      <ul>
-        <li><NavLink to="/">Epic Blog</NavLink></li>
-        <li><NavLink to="/posts/new">New Post</NavLink></li>
-        {/* <li><NavLink to="/test/">test id1</NavLink></li> */}
-        {/* <li><NavLink to="/test/id2">test id2</NavLink></li> */}
-      </ul>
+      <div className="nav">
+        <NavLink className="navLink" to="/">
+          <img src={noteIcon} className="note-icon" alt="icon" draggable="false" />
+          <p> Post Board </p>
+        </NavLink>
+        <NavLink className="navLink" to="/posts/new">
+          <img src={newIcon} className="note-icon" alt="icon" draggable="false" />
+          <p> Create Posting </p>
+        </NavLink>
+      </div>
+
     </nav>
   );
 }
