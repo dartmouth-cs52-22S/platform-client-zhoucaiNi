@@ -4,8 +4,10 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 // import CountReducer from './count-reducer';
 import PostsReducer from './postReducer';
+import authReducer from './auth-reducer';
 
 const rootReducer = combineReducers({
   posts: PostsReducer,
+  auth: authReducer,
 });
 export default rootReducer;
