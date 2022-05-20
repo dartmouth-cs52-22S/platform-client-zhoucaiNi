@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // const ROOT_URL = 'http://localhost:9090/api';
 // const ROOT_URL = 'https://platform.cs52.me/api';
-const ROOT_URL = 'https://zhoucai-api-with-auth.onrender.com';
+const ROOT_URL = 'https://zhoucai-api-with-auth.onrender.com/api';
 const API_KEY = '?key=ZNI';
 
 // keys for actiontypes
