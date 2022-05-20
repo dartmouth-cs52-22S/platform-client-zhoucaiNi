@@ -48,12 +48,12 @@ class SignIn extends Component {
         <div id="createPostForm">
           <div className="field-row-stacked">
             <label htmlFor="title"> Email: </label>
-            <input onChange={this.onEmailChange} id="title" name="title" type="title" placeholder="Post Title" />
+            <input onChange={this.onEmailChange} id="title" name="title" type="title" placeholder="Email" />
           </div>
 
           <div className="field-row-stacked">
             <label htmlFor="tags"> Password: </label>
-            <br /><input onChange={this.onPasswordChange} id="tags" name="tags" type="tags" placeholder="Tags" />
+            <br /><input onChange={this.onPasswordChange} id="tags" name="tags" type="tags" placeholder="Password" />
           </div>
           <button type="button" aria-label="button" onClick={this.onSubmit}> sign in </button>
         </div>
