@@ -12,7 +12,6 @@ const authReducer = produce((draftState, action = {}) => {
   case ActionTypes.AUTH_USER:
     console.log('auth_user');
     draftState.authenticated = true;
-    // console.log(action.payload);
     break;
   case ActionTypes.DEAUTH_USER:
     // eslint-disable-next-line prefer-destructuring

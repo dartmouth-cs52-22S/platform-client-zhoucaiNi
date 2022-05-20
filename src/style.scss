@@ -49,14 +49,14 @@ input {
 }
 
 .postList{
-  margin-top: 20px;
+  // margin-top: 20px;
   display:flex;
   justify-content: center;
   // align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   gap:15px;
-  width: 100%;
+  // width: 100%;
 }
 
 .main{
@@ -85,7 +85,11 @@ img{
 }
 
 .post{
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  max-width: 400;
+  max-height: 400;
   background-color:white;
 }
 
